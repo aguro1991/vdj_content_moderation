@@ -14,10 +14,12 @@ words:
       context: person_reference
       skip_patterns:
         - '\bho[- ]oh\b'
+        - '\boh[- ]ho\b'
         - '\bho-ee\b'
-        - '\boh,\s*ho\b'
-        - '\bhey\s+ho\b'
-        - '\bwhoa,\s*ho\b'
+        - '\boh,?\s*ho\b'
+        - '\bhey,?\s*ho\b'
+        - '\bwhoa[-,\s]*ho\b'
+        - '(?m)^ho[!.?]?\s*$'
     virtualdj:
       ambiguous: true
 
