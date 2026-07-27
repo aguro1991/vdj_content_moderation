@@ -9,6 +9,12 @@ Two main capabilities:
 2. **VirtualDJ censor list generation** — produces plain-text swear-word
    lists for VirtualDJ's exact-match lyrics censoring feature.
 
+## WARNING
+The purpose of this repo is to do content moderation. Throughout the documentation
+and codebase in this repo you will find uncensored swear words, including uncensored
+racial slurs. This is necessary in order to serve the function of tagging songs with
+these words and enabling VirtualDJ to censor them.
+
 ## Word Lists
 
 Curated vocabulary lives in `lists/`:
