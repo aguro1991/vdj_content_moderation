@@ -581,7 +581,7 @@ def test_override_lower_rating(word_lists, tmp_path):
 # Integration: analyze_file against actual music library files
 # ---------------------------------------------------------------------------
 
-_MUSIC_DIR = "/media/jbod/WCS"
+_MUSIC_DIR = os.environ.get("MUSIC_DIR", "/path/to/your/music")
 LATTO_FILE = os.path.join(_MUSIC_DIR,
     "Latto - Big Energy (Big Energy - Single).m4a")
 

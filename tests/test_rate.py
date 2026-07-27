@@ -262,3 +262,94 @@ def test_main_write_failure_counted(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["rate.py", str(tmp_path)])
 
     rate.main()  # should not raise
+
+
+# ---------------------------------------------------------------------------
+# List generation integration
+# ---------------------------------------------------------------------------
+
+def test_main_generates_lists_by_default(tmp_path, monkeypatch):
+    """main() generates VirtualDJ lists after rating unless --skip-list-generation."""
+    fake_files = ["/fake/song1.m4a"]
+    monkeypatch.setattr("rate.find_music_files", lambda d: fake_files)
+    monkeypatch.setattr("rate.load_word_lists", lambda d: [])
+    monkeypatch.setattr("rate.analyze_file", lambda fp, wl: {
+        "path": fp,
+        "filename": os.path.basename(fp),
+        "rating": "G",
+        "computed_rating": "G",
+        "override_rating": None,
+        "overridden": False,
+        "has_lyrics": True,
+        "lyrics_length": 100,
+        "matched_words": {},
+        "matched_terms": [],
+    })
+    monkeypatch.setattr("rate.write_rating", lambda p, r: None)
+    mock_generate = MagicMock()
+    monkeypatch.setattr("rate.generate_lists", mock_generate)
+    monkeypatch.setattr(sys, "argv", ["rate.py", str(tmp_path), "--dry-run"])
+
+    rate.main()
+
+    mock_generate.assert_called_once()
+
+
+def test_main_skip_list_generation(tmp_path, monkeypatch):
+    """main() skips list generation when --skip-list-generation is passed."""
+    fake_files = ["/fake/song1.m4a"]
+    monkeypatch.setattr("rate.find_music_files", lambda d: fake_files)
+    monkeypatch.setattr("rate.load_word_lists", lambda d: [])
+    monkeypatch.setattr("rate.analyze_file", lambda fp, wl: {
+        "path": fp,
+        "filename": os.path.basename(fp),
+        "rating": "G",
+        "computed_rating": "G",
+        "override_rating": None,
+        "overridden": False,
+        "has_lyrics": True,
+        "lyrics_length": 100,
+        "matched_words": {},
+        "matched_terms": [],
+    })
+    monkeypatch.setattr("rate.write_rating", lambda p, r: None)
+    mock_generate = MagicMock()
+    monkeypatch.setattr("rate.generate_lists", mock_generate)
+    monkeypatch.setattr(sys, "argv", [
+        "rate.py", str(tmp_path), "--dry-run", "--skip-list-generation",
+    ])
+
+    rate.main()
+
+    mock_generate.assert_not_called()
+
+
+def test_main_passes_ambiguous_policy_to_generate(tmp_path, monkeypatch):
+    """main() passes --ambiguous-policy through to list generation."""
+    fake_files = ["/fake/song1.m4a"]
+    monkeypatch.setattr("rate.find_music_files", lambda d: fake_files)
+    monkeypatch.setattr("rate.load_word_lists", lambda d: [])
+    monkeypatch.setattr("rate.analyze_file", lambda fp, wl: {
+        "path": fp,
+        "filename": os.path.basename(fp),
+        "rating": "G",
+        "computed_rating": "G",
+        "override_rating": None,
+        "overridden": False,
+        "has_lyrics": True,
+        "lyrics_length": 100,
+        "matched_words": {},
+        "matched_terms": [],
+    })
+    monkeypatch.setattr("rate.write_rating", lambda p, r: None)
+    mock_generate = MagicMock()
+    monkeypatch.setattr("rate.generate_lists", mock_generate)
+    monkeypatch.setattr(sys, "argv", [
+        "rate.py", str(tmp_path), "--dry-run", "--ambiguous-policy", "recall",
+    ])
+
+    rate.main()
+
+    mock_generate.assert_called_once()
+    call_args = mock_generate.call_args
+    assert call_args[0][0] == "recall"  # first positional arg is the policy

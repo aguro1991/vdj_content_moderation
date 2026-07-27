@@ -288,7 +288,7 @@ def test_read_override_rating_embedded_in_text(tmp_path):
 # Integration: read from actual music library (if available)
 # ---------------------------------------------------------------------------
 
-MUSIC_DIR = "/media/jbod/WCS"
+MUSIC_DIR = os.environ.get("MUSIC_DIR", "/path/to/your/music")
 LATTO_FILE = os.path.join(MUSIC_DIR,
     "Latto - Big Energy (Big Energy - Single).m4a")
 

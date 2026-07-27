@@ -40,14 +40,17 @@ confidence scoring, no comparison with prior ratings.
 pip install -r requirements.txt
 
 # Ensure beets has embedded lyrics (©lyr / USLT tags)
-# Then run the rating workflow:
-python scripts/rate.py /media/jbod/WCS
+# Then run the full workflow (rate + generate VirtualDJ lists):
+python scripts/rate.py /path/to/your/music
 
-# Dry run (analyze without writing tags):
-python scripts/rate.py /media/jbod/WCS --dry-run --output report.json
+# Dry run (analyze without writing tags, lists still generated):
+python scripts/rate.py /path/to/your/music --dry-run --output report.json
+
+# Skip VirtualDJ list generation:
+python scripts/rate.py /path/to/your/music --skip-list-generation
 
 # With override logging:
-python scripts/rate.py /media/jbod/WCS --log-file run.log
+python scripts/rate.py /path/to/your/music --log-file run.log
 ```
 
 ### Rating system

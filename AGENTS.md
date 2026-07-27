@@ -20,14 +20,17 @@ pip install -r requirements.txt
 ### Rate songs (assumes beets has already embedded lyrics)
 
 ```bash
-# Full workflow: analyze + write tags
-python scripts/rate.py /media/jbod/WCS
+# Full workflow: analyze + write tags + generate VirtualDJ lists
+python scripts/rate.py /path/to/your/music
 
-# Dry run: analyze only, no tag writes
-python scripts/rate.py /media/jbod/WCS --dry-run --output report.json
+# Dry run: analyze only, no tag writes (lists still generated)
+python scripts/rate.py /path/to/your/music --dry-run --output report.json
+
+# Skip VirtualDJ list generation
+python scripts/rate.py /path/to/your/music --skip-list-generation
 
 # With override logging
-python scripts/rate.py /media/jbod/WCS --log-file run.log
+python scripts/rate.py /path/to/your/music --log-file run.log
 ```
 
 The log file is created fresh (truncated) on each run and is general-purpose —
@@ -65,8 +68,9 @@ When an override is applied, the analysis report includes:
 ## Scripts
 
 - `scripts/rate.py` — CLI entry point for the content rating workflow:
-  finds music files, analyzes each against word lists, and writes ratings to
-  file tags. Supports `--dry-run`, `--output` (JSON report), and `--log-file`.
+  finds music files, analyzes each against word lists, writes ratings to
+  file tags, then generates VirtualDJ censor lists. Supports `--dry-run`,
+  `--output` (JSON report), `--log-file`, and `--skip-list-generation`.
 - `scripts/read_lyrics.py` — library: reads embedded lyrics (M4A ©lyr, MP3/AIFF
   USLT) and comment tags. Lyrics with fewer than 10 stripped characters are
   treated as absent.

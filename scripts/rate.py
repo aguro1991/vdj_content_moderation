@@ -1,22 +1,34 @@
 #!/usr/bin/env python3
-"""Content moderation workflow: read lyrics → analyze → write tags.
+"""Content moderation workflow: read lyrics → analyze → write tags → generate lists.
 
 Assumes beets has already been run to embed lyrics in the music files.
 This is the single entry point for the content moderation pipeline.
 
+After rating songs, VirtualDJ censor lists are generated from the same YAML
+word lists. Use --skip-list-generation to skip this step.
+
 Usage:
-  python scripts/rate.py /media/jbod/WCS
-  python scripts/rate.py /media/jbod/WCS --dry-run --output report.json
-  python scripts/rate.py /media/jbod/WCS --log-file run.log
+  python scripts/rate.py /path/to/your/music
+  python scripts/rate.py /path/to/your/music --dry-run --output report.json
+  python scripts/rate.py /path/to/your/music --log-file run.log
+  python scripts/rate.py /path/to/your/music --skip-list-generation
 """
 import argparse
 import json
 import os
 import sys
+from pathlib import Path
 
 from read_lyrics import find_music_files
 from analyze_lyrics import load_word_lists, analyze_file, DEFAULT_LISTS_DIR
 from write_tags import write_rating
+
+# Add repo root to sys.path so we can import generate.py
+_REPO_ROOT = str(Path(__file__).resolve().parent.parent)
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
+
+from generate import generate as generate_lists
 
 
 def _write_log_line(log_file, analysis):
@@ -67,6 +79,12 @@ def main():
                         help="General-purpose log file for this run (truncated on open)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Analyze without writing tags to files")
+    parser.add_argument("--skip-list-generation", action="store_true",
+                        help="Skip generating VirtualDJ censor lists after rating")
+    parser.add_argument("--ambiguous-policy", choices=["precision", "recall"],
+                        default="precision",
+                        help="Ambiguous term policy for VirtualDJ list generation. "
+                             "Default: precision")
     args = parser.parse_args()
 
     music_dir = os.path.expanduser(args.music_dir)
@@ -107,6 +125,11 @@ def main():
             with open(args.output, "w") as f:
                 json.dump(results, f, indent=2)
             print(f"Report written to {args.output}", file=sys.stderr)
+
+        # Generate VirtualDJ censor lists
+        if not args.skip_list_generation:
+            print("\nGenerating VirtualDJ censor lists...", file=sys.stderr)
+            generate_lists(args.ambiguous_policy, _REPO_ROOT)
 
     finally:
         if log_file:
