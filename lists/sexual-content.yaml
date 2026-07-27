@@ -20,6 +20,12 @@ words:
         - '\bhey,?\s*ho\b'
         - '\bwhoa[-,\s]*ho\b'
         - '(?m)^ho[!.?]?\s*$'
+        - '\booh\s+ho\b'
+        - '\byo[- ]ho\b'
+        - '\bho,\s*ho\b'
+        - '\bmustard on the beat,?\s*ho\b'
+        - '\bna\s+ho\b'
+        - '\bho\s+(?:raha|rahi|gaya|gayi|jaye|jaaye)\b'
     virtualdj:
       ambiguous: true
 
