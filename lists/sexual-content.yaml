@@ -49,3 +49,19 @@ words:
 
   - term: asshole
     forms: [asshole, assholes, asshole's]
+
+  - term: sex
+    forms: [sex, sex's, sexes, "sex!"]
+
+  - term: erotic
+    forms: [erotic, erotica, erotic's]
+
+  - term: orgasm
+    forms: [orgasm, orgasms, orgasm's]
+
+  - term: foreplay
+    forms: [foreplay, foreplays]
+
+  - term: intercourse
+    forms: [intercourse]
+
