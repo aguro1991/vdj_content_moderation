@@ -5,6 +5,10 @@ Generates swear-word censor lists for VirtualDJ's lyrics censoring feature.
 VirtualDJ supports **exact string matching only** — no regex or contextual
 logic. This tool produces plain-text lists of explicit terms for import.
 
+This repo only owns vocabulary/list generation. It does not fetch or rate
+lyrics — that is handled by [ai-tools](../ai-tools), which reads
+beets-embedded lyrics and classifies them against these same YAML word lists.
+
 ## Word Lists
 
 Curated vocabulary lives in `lists/`:
