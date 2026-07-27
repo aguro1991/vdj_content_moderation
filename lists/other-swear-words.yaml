@@ -1,6 +1,12 @@
 words:
-  - ass
-  - bastard
-  - hicky
-  - hickies
-  - horny
+  - term: ass
+    forms: [ass, asses, ass's]
+
+  - term: bastard
+    forms: [bastard, bastards, bastard's]
+
+  - term: hicky
+    forms: [hicky, hickys, hickies, hicky's]
+
+  - term: horny
+    forms: [horny, hornys]

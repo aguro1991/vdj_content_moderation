@@ -194,6 +194,11 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+# Generated VirtualDJ censor lists
+no-slurs-no-sex.txt
+conventions.txt
+child-friendly.txt
+
 # Cursor
 #  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data

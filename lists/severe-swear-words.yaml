@@ -1,11 +1,16 @@
 words:
-  - bullshit
-  - bullshittin
-  - bullshitting
-  - fuck
-  - fucker
-  - motherfuck
-  - motherfucker
-  - piss
-  - shit
-  - shitting
+  - term: bullshit
+    forms: [bullshit, bullshits, bullshit's, bullshittin, "bullshittin'", bullshitting]
+
+  - term: fuck
+    forms: [fuck, fucks, fuck's, "fuck!", fucked, fuckin, "fuckin'", fucking, fucker, fuckers]
+
+  - term: motherfuck
+    forms: [motherfuck, motherfucks, motherfuck's, motherfucked, motherfuckin,
+            "motherfuckin'", motherfucking, motherfucker, motherfuckers]
+
+  - term: piss
+    forms: [piss, pisses, piss's, pissed, pissing]
+
+  - term: shit
+    forms: [shit, shits, shit's, "shit!", shitting]

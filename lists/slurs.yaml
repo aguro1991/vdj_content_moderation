@@ -1,8 +1,15 @@
 words:
-  - fag
-  - faggot
-  - faggot-ass
-  - gypsies
-  - gypsy
-  - nigga
-  - nigger
+  - term: fag
+    forms: [fag, fags, fag's]
+
+  - term: faggot
+    forms: [faggot, faggots, faggot's, "faggot-ass"]
+
+  - term: gypsy
+    forms: [gypsy, gypsys, gypsies, gypsy's]
+
+  - term: nigga
+    forms: [nigga, niggas, nigga's, "nigga!"]
+
+  - term: nigger
+    forms: [nigger, niggers, nigger's]

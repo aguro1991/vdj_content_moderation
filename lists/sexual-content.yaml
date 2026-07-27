@@ -1,13 +1,43 @@
 words:
-  - bitch
-  - cum
-  - dick
-  - ho
-  - hoe
-  - penis
-  - pussies
-  - pussy
-  - tit
-  - titties
-  - titty
-  - whore
+  - term: bitch
+    forms: [bitch, bitches, bitch's, "bitch!", bitchin, "bitchin'", bitching]
+
+  - term: cum
+    forms: [cum, cums, cum's, cumming]
+
+  - term: dick
+    forms: [dick, dicks, dick's]
+
+  - term: ho
+    forms: [ho, hos, "ho's"]
+    moderation:
+      context: person_reference
+      skip_patterns:
+        - '\bho[- ]oh\b'
+        - '\bho-ee\b'
+        - '\boh,\s*ho\b'
+        - '\bhey\s+ho\b'
+        - '\bwhoa,\s*ho\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: hoe
+    forms: [hoe, hoes, hoe's]
+
+  - term: penis
+    forms: [penis, penises, penis's]
+
+  - term: pussy
+    forms: [pussy, pussys, pussies, pussy's]
+
+  - term: tit
+    forms: [tit, tits, tit's]
+
+  - term: titty
+    forms: [titty, tittys, titties, titty's]
+
+  - term: whore
+    forms: [whore, whores, whore's, whorin, "whorin'", whoring]
+
+  - term: asshole
+    forms: [asshole, assholes, asshole's]
