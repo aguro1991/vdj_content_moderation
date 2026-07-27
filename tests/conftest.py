@@ -1,5 +1,11 @@
-"""Pytest configuration — make main.py importable from tests."""
+"""Pytest configuration — make repo modules importable from tests."""
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+REPO_ROOT = Path(__file__).parent.parent
+
+# Repo root: for importing generate.py
+sys.path.insert(0, str(REPO_ROOT))
+
+# Scripts directory: for importing read_lyrics, analyze_lyrics, write_tags, rate
+sys.path.insert(0, str(REPO_ROOT / "scripts"))

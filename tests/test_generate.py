@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-import main
+import generate
 
 REPO_ROOT = Path(__file__).parent.parent
 LISTS_DIR = REPO_ROOT / "lists"
@@ -19,7 +19,7 @@ LISTS_DIR = REPO_ROOT / "lists"
 
 def generate_to_tmp(tmp_path, policy="precision"):
     """Run generate() into a temp directory and return the three output files."""
-    main.generate(policy, tmp_path)
+    generate.generate(policy, tmp_path)
     files = {}
     for fname in ["no-slurs-no-sex.txt", "conventions.txt", "child-friendly.txt"]:
         files[fname] = (tmp_path / fname).read_text()
@@ -159,12 +159,12 @@ def test_no_duplicates(tmp_path):
 
 def test_deterministic(tmp_path):
     """Generating twice produces identical output."""
-    main.generate("recall", tmp_path)
+    generate.generate("recall", tmp_path)
     first = {f: (tmp_path / f).read_text()
              for f in ["no-slurs-no-sex.txt", "conventions.txt", "child-friendly.txt"]}
 
     tmp2 = tmp_path / "second"
-    main.generate("recall", tmp2)
+    generate.generate("recall", tmp2)
     second = {f: (tmp2 / f).read_text()
               for f in ["no-slurs-no-sex.txt", "conventions.txt", "child-friendly.txt"]}
 
@@ -252,9 +252,9 @@ def test_precision_omits_only_ho(tmp_path):
 # ---------------------------------------------------------------------------
 
 def test_cli_default_precision(tmp_path):
-    """Running main.py with no args uses precision policy."""
+    """Running generate.py with no args uses precision policy."""
     result = subprocess.run(
-        [sys.executable, str(REPO_ROOT / "main.py"),
+        [sys.executable, str(REPO_ROOT / "generate.py"),
          "--output-dir", str(tmp_path)],
         capture_output=True, text=True,
     )
@@ -264,9 +264,9 @@ def test_cli_default_precision(tmp_path):
 
 
 def test_cli_recall(tmp_path):
-    """Running main.py with --ambiguous-policy recall includes ho."""
+    """Running generate.py with --ambiguous-policy recall includes ho."""
     result = subprocess.run(
-        [sys.executable, str(REPO_ROOT / "main.py"),
+        [sys.executable, str(REPO_ROOT / "generate.py"),
          "--ambiguous-policy", "recall",
          "--output-dir", str(tmp_path)],
         capture_output=True, text=True,
@@ -279,7 +279,7 @@ def test_cli_recall(tmp_path):
 def test_cli_omitted_logged_to_stderr(tmp_path):
     """Precision mode logs omitted ambiguous terms to stderr."""
     result = subprocess.run(
-        [sys.executable, str(REPO_ROOT / "main.py"),
+        [sys.executable, str(REPO_ROOT / "generate.py"),
          "--output-dir", str(tmp_path)],
         capture_output=True, text=True,
     )
@@ -290,7 +290,7 @@ def test_cli_omitted_logged_to_stderr(tmp_path):
 def test_cli_term_counts_in_stderr(tmp_path):
     """Stderr includes term counts for each output file."""
     result = subprocess.run(
-        [sys.executable, str(REPO_ROOT / "main.py"),
+        [sys.executable, str(REPO_ROOT / "generate.py"),
          "--output-dir", str(tmp_path)],
         capture_output=True, text=True,
     )
