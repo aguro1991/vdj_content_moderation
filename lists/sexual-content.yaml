@@ -62,6 +62,11 @@ words:
   - term: foreplay
     forms: [foreplay, foreplays]
 
+  - term: bitch (censored)
+    forms: ["b-", "B-", "b*tch", "b*tches"]
+    virtualdj:
+      include: false
+
   - term: intercourse
     forms: [intercourse]
 

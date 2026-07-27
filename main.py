@@ -47,6 +47,12 @@ def load_terms(yaml_path, ambiguous_policy):
     for entry in data["words"]:
         vj = entry.get("virtualdj", {})
 
+        if not vj.get("include", True):
+            # Explicitly excluded from VirtualDJ output (e.g. censored forms
+            # like "n-", "f*" that are useful for moderation but not for
+            # VirtualDJ's exact-match censoring)
+            continue
+
         if vj.get("ambiguous"):
             if ambiguous_policy == "precision":
                 omitted.append((entry["term"], "ambiguous (precision policy)"))

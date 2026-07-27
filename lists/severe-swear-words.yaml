@@ -14,3 +14,13 @@ words:
 
   - term: shit
     forms: [shit, shits, shit's, "shit!", shitting]
+
+  - term: fuck (censored)
+    forms: ["f-", "F-", "f*ck", "f*cks", "f*ckin", "f*cking", "f*cked", "f*cker"]
+    virtualdj:
+      include: false
+
+  - term: shit (censored)
+    forms: ["s-", "S-", "s*it", "s*itting"]
+    virtualdj:
+      include: false

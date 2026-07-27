@@ -329,3 +329,19 @@ def test_no_regex_syntax_in_output(tmp_path):
         for ch in forbidden:
             assert ch not in content, \
                 f"Regex metacharacter '{ch}' found in {fname}"
+
+
+def test_censored_forms_excluded_from_output(tmp_path):
+    """Forms marked virtualdj.include=false must not appear in output.
+
+    Censored forms like 'n-', 'f*', 'b*itch' are useful for moderation
+    (ai-tools) but must not appear in VirtualDJ censor lists.
+    """
+    files = generate_to_tmp(tmp_path, policy="recall")
+    censored_forms = ["n-", "N-", "f-", "F-", "b-", "B-", "s-", "S-",
+                      "f*ck", "n*gga", "b*tch", "s*it", "f*ggot"]
+    for fname, content in files.items():
+        terms = content.split()
+        for form in censored_forms:
+            assert form not in terms, \
+                f"Censored form '{form}' appeared in {fname}"

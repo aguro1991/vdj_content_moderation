@@ -13,3 +13,13 @@ words:
 
   - term: nigger
     forms: [nigger, niggers, nigger's]
+
+  - term: nigga (censored)
+    forms: ["n-", "N-", "n*gga", "n*ggas", "n*gger"]
+    virtualdj:
+      include: false
+
+  - term: faggot (censored)
+    forms: ["f*", "f*ggot", "f*ggots"]
+    virtualdj:
+      include: false
