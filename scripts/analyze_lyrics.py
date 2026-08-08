@@ -20,12 +20,18 @@ import yaml
 
 from read_lyrics import read_lyrics, read_song_info, find_music_files, read_override_rating
 
+# Unicode whitespace characters (various space widths, no-break space, etc.)
+# normalized to ASCII spaces so that word-boundary regexes and literal-space
+# skip patterns match consistently regardless of the source's encoding.
+_UNICODE_SPACES = re.compile(r'[\u2000-\u200a\u202f\u205f\u3000\xa0]')
+
 # Map YAML filename → rating
 YAML_TO_RATING = {
     "slurs.yaml": "X",
     "sexual-content.yaml": "R",
     "severe-swear-words.yaml": "PG-13",
     "other-swear-words.yaml": "PG-8",
+    "drug-references.yaml": "PG-8",
 }
 
 # Default lists directory (from vdj_content_moderation)
@@ -59,7 +65,7 @@ def find_matches(text, forms, moderation=None):
     that pass the context filters.
     """
     matches = []
-    text_lower = text.lower()
+    text_lower = _UNICODE_SPACES.sub(' ', text.lower())
 
     for form in forms:
         form_lower = form.lower()

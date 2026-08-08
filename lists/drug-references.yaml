@@ -1,0 +1,292 @@
+words:
+  # Unambiguous drug terms
+  - term: marijuana
+    forms: [marijuana, marijuana's]
+
+  - term: cocaine
+    forms: [cocaine, cocaine's]
+
+  - term: heroin
+    forms: [heroin, heroin's]
+
+  - term: ganja
+    forms: [ganja, ganjas, ganja's]
+
+  - term: molly
+    forms: [molly, molly's]
+
+  - term: mdma
+    forms: [mdma]
+
+  - term: percocet
+    forms: [percocet, percocets, percocet's]
+
+  - term: shrooms
+    forms: [shrooms, shroom, shroom's]
+
+  - term: xanax
+    forms: [xanax, xans, xan, xan's]
+
+  - term: adderall
+    forms: [adderall]
+
+  - term: fentanyl
+    forms: [fentanyl, fentanyl's]
+
+  - term: oxycodone
+    forms: [oxycodone]
+
+  - term: vicodin
+    forms: [vicodin]
+
+  - term: codeine
+    forms: [codeine]
+
+  - term: ketamine
+    forms: [ketamine]
+
+  - term: lsd
+    forms: [lsd]
+
+  - term: opium
+    forms: [opium]
+
+  - term: morphine
+    forms: [morphine]
+
+  - term: methamphetamine
+    forms: [methamphetamine]
+
+  - term: promethazine
+    forms: [promethazine]
+
+  - term: valium
+    forms: [valium]
+
+  - term: sizzurp
+    forms: [sizzurp]
+
+  - term: crystal meth
+    forms: ["crystal meth"]
+    virtualdj:
+      include: false
+
+  - term: meth
+    forms: [meth, meth's]
+
+  - term: blunt
+    forms: [blunt, blunts, blunt's]
+    moderation:
+      context: marijuana
+      skip_patterns:
+        - '\bto be blunt\b'
+        - '\bblunt about\b'
+        - '\bblunt with\b'
+        - '\bblunt instrument\b'
+        - '\bblunt force\b'
+        - '\bblunt trauma\b'
+        - '\bblunt honesty\b'
+        - '\bbe blunt\b'
+        - '\bblunt,\s*but\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: bong
+    forms: [bong, bongs, bong's]
+
+  - term: d-boy
+    forms: ["d-boy", "d-boys", "d-boy's"]
+    virtualdj:
+      include: false
+
+  - term: trap house
+    forms: ["trap house", "trap house's"]
+    virtualdj:
+      include: false
+
+  - term: smoke weed
+    forms: ["smoke weed", "smoking weed"]
+    virtualdj:
+      include: false
+
+  # Ambiguous drug terms — flagged for content rating but omitted from
+  # VirtualDJ output in precision mode to avoid false censorship.
+  - term: weed
+    forms: [weed, weeds, weed's]
+    moderation:
+      context: marijuana
+      skip_patterns:
+        - '\bweed out\b'
+        - '\bweed whacker\b'
+        - '\bweed killer\b'
+        - '\bsea weed\b'
+        - '\bseaweed\b'
+        - '\bditch weed\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: dope
+    forms: [dope, dopes, dope's]
+    moderation:
+      context: drug_reference
+      skip_patterns:
+        - '\bthat''?s dope\b'
+        - '\bso dope\b'
+        - '\bpretty dope\b'
+        - '\bdope beat\b'
+        - '\bdope track\b'
+        - '\bdope song\b'
+        - '\bdope music\b'
+        - '\bdope shit\b'
+        - '\bdope one\b'
+        - '\banother dope\b'
+        - '\bdope flow\b'
+        - '\bdope rhymes?\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: crack
+    forms: [crack, cracks, crack's, cracked, cracking]
+    moderation:
+      context: drug_reference
+      skip_patterns:
+        - '\bcrack a smile\b'
+        - '\bcrack a half smile\b'
+        - '\bcrack(?:ed|s)? (?:the |a )?(?:code|safe|door|window)\b'
+        - '\bcrack of dawn\b'
+        - '\bcrack open\b'
+        - '\bcrack down\b'
+        - '\bcrack it (?:open|up)\b'
+        - '\bcrack (?:him|her|them|my|your) (?:up|open)\b'
+        - '\bcracking up\b'
+        - '\bget it crackin''?g?\b'
+        - '\bcrack a (?:bottle|beer|cold one|nut)\b'
+        - '\bcrack me a nut\b'
+        - '\bcrack (?:my|your|his|her) (?:knuckles|neck|back|fingers)\b'
+        - '\bback door cracked\b'
+        - '\bcracks in\b'
+        - '\bthrough the cracks\b'
+        - '\bcracks of\b'
+        - '\bsunlight cracks\b'
+        - '\bfixing (?:all )?(?:the )?cracks\b'
+        - '\bjust a crack\b'
+        - '\bopen (?:just )?a crack\b'
+        - '\bdoor (?:open )?just a crack\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: ecstasy
+    forms: [ecstasy]
+    moderation:
+      context: drug_reference
+      skip_patterns:
+        - '\becstasy of\b'
+        - '\bin ecstasy\b'
+        - '\bcould be ecstasy\b'
+        - '\bit could be ecstasy\b'
+        - '\binto ecstasy\b'
+        - '\bflying into ecstasy\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: lean
+    forms: [lean, leans, lean's]
+    moderation:
+      context: cough_syrup
+      skip_patterns:
+        - '\blean back\b'
+        - '\blean forward\b'
+        - '\blean in\b'
+        - '\blean on\b'
+        - '\blean into\b'
+        - '\blean toward\b'
+        - '\blean mean\b'
+        - '\blean closer\b'
+        - '\blean over\b'
+        - '\bdon''?t lean\b'
+        - '\blean against\b'
+        - '\blean (?:my|your|his|her|their)\b'
+        - '\blean to\b'
+        - '\blean up\b'
+        - '\blean out\b'
+        - '\blean down\b'
+        - '\blean away\b'
+        - '\blean like\b'
+        - '\blean with\b'
+        - '\blean side\b'
+        - '\blean body\b'
+        - '\blean (?:as|and|from|for|at|by)\b'
+        - '\blean legs\b'
+        - '\blean frame\b'
+        - '\blean figure\b'
+        - '\blean physique\b'
+        - '\blong and lean\b'
+        - '\bstill lean\b'
+        - '\bjust lean\b'
+        - '\blean (?:that|this)\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: pot
+    forms: [pot, pots, pot's]
+    moderation:
+      context: marijuana
+      skip_patterns:
+        - '\bpot of\b'
+        - '\bpot belly\b'
+        - '\bpot roast\b'
+        - '\bmelting pot\b'
+        - '\bpot luck\b'
+        - '\bpot of gold\b'
+        - '\bjackpot\b'
+        - '\bpot hole\b'
+        - '\bpot holes\b'
+        - '\bhot pot\b'
+        - '\bpot pie\b'
+        - '\bin a pot\b'
+        - '\bthe pot\b'
+        - '\ba pot\b'
+        - '\b(?:stick|stir|put|drop|mix|throw|place|cook|melt|heat|boil|simmer|stew)\b.*\bpot\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: acid
+    forms: [acid, acids, acid's]
+    moderation:
+      context: lsd
+      skip_patterns:
+        - '\bacid rain\b'
+        - '\bacid reflux\b'
+        - '\bstomach acid\b'
+        - '\bacidic\b'
+        - '\bacid test\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: pill
+    forms: [pill, pills, pill's]
+    moderation:
+      context: drug_reference
+      skip_patterns:
+        - '\bbitter pill\b'
+        - '\bpill to swallow\b'
+        - '\bmagic pill\b'
+        - '\bsleeping pill\b'
+        - '\bpill bottle\b'
+        - '\bpill (?:for|to)\b'
+        - '\ba pill\b'
+        - '\bthe pill\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: coke
+    forms: [coke, cokes, coke's]
+    moderation:
+      context: cocaine
+      skip_patterns:
+        - '\bcoke (?:bottle|can|zero|classic|machine)\b'
+        - '\bdiet coke\b'
+        - '\bcoke and (?:smile|rum)\b'
+        - '\bhave a coke\b'
+    virtualdj:
+      ambiguous: true

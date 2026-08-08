@@ -48,7 +48,7 @@ words:
     forms: [whore, whores, whore's, whorin, "whorin'", whoring]
 
   - term: asshole
-    forms: [asshole, assholes, asshole's]
+    forms: [asshole, assholes, asshole's, arsehole, arseholes, arsehole's]
 
   - term: sex
     forms: [sex, sex's, sexes, "sex!"]
@@ -69,4 +69,98 @@ words:
 
   - term: intercourse
     forms: [intercourse]
+
+  - term: cock
+    forms: [cock, cocks, cock's]
+
+  - term: slut
+    forms: [slut, sluts, slut's, slutty]
+
+  - term: thot
+    forms: [thot, thots, thot's]
+
+  - term: skank
+    forms: [skank, skanks, skank's, skanky]
+
+  - term: fuckboy
+    forms: [fuckboy, fuckboys, fuckboy's]
+
+  - term: pimp
+    forms: [pimp, pimps, pimp's, pimpin, "pimpin'", pimping]
+
+  - term: clit
+    forms: [clit, clits, clit's]
+
+  - term: clitoris
+    forms: [clitoris, clitorises, clitoris's]
+
+  - term: thong
+    forms: [thong, thongs, thong's]
+
+  - term: twerkin
+    forms: [twerkin, "twerkin'", twerking, twerk, twerks]
+
+  - term: lingerie
+    forms: [lingerie]
+
+  - term: panties
+    forms: [panties, panty, panty's]
+
+  - term: topless
+    forms: [topless]
+
+  - term: cameltoe
+    forms: [cameltoe, cameltoes, cameltoe's]
+
+  - term: g-spot
+    forms: ["g-spot", gspot]
+
+  - term: stripper
+    forms: [stripper, strippers, stripper's]
+
+  - term: make love (multi-word)
+    forms: ["make love", "making love"]
+    virtualdj:
+      include: false
+
+  - term: condom
+    forms: [condom, condoms, condom's]
+
+  - term: orgy
+    forms: [orgy, orgies, orgy's]
+
+  - term: ménage à trois
+    forms: ["ménage à trois", ménage]
+    virtualdj:
+      include: false
+
+  - term: nudes
+    forms: [nudes, nudes']
+
+  - term: one night stand
+    forms: ["one night stand", "one-night stand"]
+    virtualdj:
+      include: false
+
+  - term: kinky
+    forms: [kinky, kinkier, kinkiest]
+
+  - term: jacking off
+    forms: ["jacking off"]
+    virtualdj:
+      include: false
+
+  - term: prick
+    forms: [prick, pricks, prick's]
+
+  - term: punani
+    forms: [punani, punani's]
+
+  - term: lust
+    forms: [lust, lusts, lust's, lustful]
+    moderation:
+      context: sexual_desire
+      skip_patterns:
+        - '\blust for life\b'
+        - '\blust for power\b'
 

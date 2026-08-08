@@ -93,6 +93,7 @@ Curated vocabulary lives in `lists/`:
 | `sexual-content.yaml` | Sexual content | R |
 | `severe-swear-words.yaml` | Severe swear words | PG-13 |
 | `other-swear-words.yaml` | Other swear words | PG-8 |
+| `drug-references.yaml` | Drug references | PG-8 |
 
 Each word is defined with explicit, curated forms rather than blanket suffix
 expansion. Censored forms (e.g. `n-`, `f*ck`) are marked `virtualdj.include: false`
@@ -107,7 +108,7 @@ Ratings are assigned in priority order (highest severity wins):
 | X | Slurs | `slurs.yaml` |
 | R | Sexual content | `sexual-content.yaml` |
 | PG-13 | Severe swear words | `severe-swear-words.yaml` |
-| PG-8 | Other swear words | `other-swear-words.yaml` |
+| PG-8 | Other swear words / drug references | `other-swear-words.yaml`, `drug-references.yaml` |
 | G | Default (clean) | — |
 | MANUAL REVIEW | No embedded lyrics | — |
 
@@ -119,7 +120,7 @@ Generated cumulatively by severity:
 |------|----------|
 | `no-slurs-no-sex.txt` | Slurs + sexual content |
 | `conventions.txt` | Above + severe swear words |
-| `child-friendly.txt` | Above + other swear words |
+| `child-friendly.txt` | Above + other swear words + drug references |
 
 ## Key rules
 

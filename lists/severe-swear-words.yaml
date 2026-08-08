@@ -13,7 +13,7 @@ words:
     forms: [piss, pisses, piss's, pissed, pissing]
 
   - term: shit
-    forms: [shit, shits, shit's, "shit!", shitting]
+    forms: [shit, shits, shit's, "shit!", shitting, shitty, shittier, shittiest]
 
   - term: fuck (censored)
     forms: ["f-", "F-", "f*ck", "f*cks", "f*ckin", "f*cking", "f*cked", "f*cker"]
@@ -24,3 +24,14 @@ words:
     forms: ["s-", "S-", "s*it", "s*itting"]
     virtualdj:
       include: false
+
+  - term: goddamn
+    forms: [goddamn, goddam, goddamned, goddamn's, "goddamn!"]
+
+  - term: god damn (multi-word)
+    forms: ["god damn", "god damned"]
+    virtualdj:
+      include: false
+
+  - term: cunt
+    forms: [cunt, cunts, cunt's]

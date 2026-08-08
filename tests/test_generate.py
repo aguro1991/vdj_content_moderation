@@ -49,6 +49,7 @@ def load_all_forms(yaml_filename):
     "sexual-content.yaml",
     "severe-swear-words.yaml",
     "other-swear-words.yaml",
+    "drug-references.yaml",
 ])
 def test_yaml_valid_and_structured(yaml_file):
     """Every YAML file is valid and uses structured entries with term + forms."""
@@ -229,8 +230,8 @@ def test_recall_includes_ho(tmp_path):
         assert "ho" in terms, f"'ho' should be present in recall mode but missing from {fname}"
 
 
-def test_precision_omits_only_ho(tmp_path):
-    """Precision mode omits only 'ho' — no other term should be dropped."""
+def test_precision_omits_only_ambiguous(tmp_path):
+    """Precision mode omits only ambiguous terms — no other term should be dropped."""
     files_recall = generate_to_tmp(tmp_path, policy="recall")
     files_precision = generate_to_tmp(tmp_path, policy="precision")
 
@@ -242,8 +243,27 @@ def test_precision_omits_only_ho(tmp_path):
         precision_terms |= parse_terms(content)
 
     removed = recall_terms - precision_terms
-    # Only ho-family terms should be removed
-    assert removed == {"ho", "hos", "ho's"}, \
+    # Ambiguous terms (ho, bloody, screw + drug references) should be removed
+    # in precision mode
+    expected_removed = {
+        # sexual-content.yaml
+        "ho", "hos", "ho's",
+        # other-swear-words.yaml
+        "bloody", "bloodier", "bloodiest",
+        "screw", "screws", "screw's", "screwed", "screwing",
+        # drug-references.yaml
+        "weed", "weeds", "weed's",
+        "dope", "dopes", "dope's",
+        "crack", "cracks", "crack's", "cracked", "cracking",
+        "ecstasy",
+        "lean", "leans", "lean's",
+        "pot", "pots", "pot's",
+        "acid", "acids", "acid's",
+        "pill", "pills", "pill's",
+        "coke", "cokes", "coke's",
+        "blunt", "blunts", "blunt's",
+    }
+    assert removed == expected_removed, \
         f"Precision removed unexpected terms: {removed}"
 
 

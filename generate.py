@@ -30,7 +30,8 @@ OUTPUTS = [
     ("conventions.txt", ["slurs.yaml", "sexual-content.yaml",
                          "severe-swear-words.yaml"]),
     ("child-friendly.txt", ["slurs.yaml", "sexual-content.yaml",
-                            "severe-swear-words.yaml", "other-swear-words.yaml"]),
+                            "severe-swear-words.yaml", "other-swear-words.yaml",
+                            "drug-references.yaml"]),
 ]
 
 

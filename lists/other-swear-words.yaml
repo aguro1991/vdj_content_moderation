@@ -22,3 +22,44 @@ words:
 
   - term: naked
     forms: [naked, nakedly, naked's]
+
+  - term: crap
+    forms: [crap, craps, crap's, crappy, crappier, crappiest]
+
+  - term: arse
+    forms: [arse, arses, arse's]
+
+  - term: badass
+    forms: [badass, badasses, badass's]
+
+  - term: bloody
+    forms: [bloody, bloodier, bloodiest]
+    moderation:
+      context: literal_blood
+      skip_patterns:
+        - '\bbloody nose\b'
+        - '\bbloody noses\b'
+        - '\bbloody mary\b'
+        - '\bbloody tears?\b'
+        - '\bbloody hands?\b'
+        - '\bbloody knife\b'
+        - '\bbloody blades?\b'
+        - '\bbloody valentine\b'
+        - '\bbloody river\b'
+        - '\bbloody moon\b'
+        - '\bbloody this\b'
+        - '\bbloody that\b'
+        - '\bbloody it\b'
+    virtualdj:
+      ambiguous: true
+
+  - term: screw
+    forms: [screw, screws, screw's, screwed, screwing]
+    moderation:
+      context: music_production
+      skip_patterns:
+        - '\bchop and screw\b'
+        - '\bchopped and screwed\b'
+        - '\bchopped and screw\b'
+    virtualdj:
+      ambiguous: true

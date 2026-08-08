@@ -9,7 +9,7 @@ words:
     forms: [gypsy, gypsys, gypsies, gypsy's]
 
   - term: nigga
-    forms: [nigga, niggas, nigga's, "nigga!"]
+    forms: [nigga, niggas, nigga's, "nigga!", niggaz]
 
   - term: nigger
     forms: [nigger, niggers, nigger's]
@@ -23,3 +23,6 @@ words:
     forms: ["f*", "f*ggot", "f*ggots"]
     virtualdj:
       include: false
+
+  - term: retarded
+    forms: [retarded, retard, retards]
